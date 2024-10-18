@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-obj
+  namespace: dev
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - frontend.48-216-147-199.nip.io
+      secretName: my-cert-secret
+  rules:
+  - host: frontend.48-216-147-199.nip.io
+  - http:
+      paths:
+      - path: /web1
+        pathType: Prefix
+        backend:
+          service:
+            name: web1
+            port:
+              number: 80
+      - path: /web2
+        pathType: Prefix
+        backend:
+          service:
+            name: web2
+            port:
+              number: 80
+      - path: /(.*)
+        pathType: ImplementationSpecific
+        backend:
+         service:
+           name: default
+           port:
+             number: 80

@@ -1,0 +1,9 @@
+# app1Name: web1
+# app2Name: web2
+
+# ingress-nginx:
+#   enabled: true
+#   controller:
+#     publishService:
+#       enabled: true
+#   namespaceOverride: ingress-nginx
