@@ -10,6 +10,6 @@ spec:
     - ReadWriteMany
   storageClassName: azurefile
   azureFile:
-    secretName: azure-secret
-    shareName: nhodzic-jap-file-share
+    secretName: azure-storage-acc-secret
+    shareName: aksshare
     readOnly: false

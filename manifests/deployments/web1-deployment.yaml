@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: web1
-        image: nihad906/jap-week2-nihad-web1:latest
+        image: week3myacr.azurecr.io/web1:latest
         volumeMounts:
         - mountPath: "/mnt/azure"
           name: azurefile
@@ -25,6 +25,8 @@ spec:
       - name: azurefile
         persistentVolumeClaim:
           claimName: azurefile-pv
+      imagePullSecrets:
+      - name: acr-secret
       
 ---
 apiVersion: v1

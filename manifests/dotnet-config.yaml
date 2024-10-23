@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dotnet-config-map
+  namespace: dev
+data:
+  VAR1: "I ovaj task je gotov"
+  VAR2: "Nije bio tezak"
